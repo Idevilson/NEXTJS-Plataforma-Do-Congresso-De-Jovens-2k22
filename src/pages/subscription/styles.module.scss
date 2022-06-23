@@ -1,6 +1,6 @@
 .paymentContainer {
     max-width: 1120px;
-    height: 100vh - 20vh;
+    height: 700px;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -31,6 +31,7 @@
             width: 50%;
 
             .checkBoxContainer{
+                padding: 1rem;
                 flex: 1;
                 display: flex;
                 max-height: 2rem;
@@ -38,9 +39,14 @@
                 margin-top: 1.5rem;
 
                 justify-content: center;
+                align-items: center;
 
                 border: 2px solid green;
                 border-radius: 0.5rem;
+
+                label{
+                    margin-left: 0.5rem;
+                }
             }
 
             p{  

@@ -3,7 +3,6 @@ import { validate } from 'gerador-validador-cpf';
 import { v4 as uuidv4 } from 'uuid';
 
 import "../../database/fireBaseConfig";
-import { useRouter } from 'next/router';
 
 import Lottie from 'react-lottie';
 import form from '../../lottie/form.json';
@@ -25,6 +24,8 @@ import {
 
 export default function Subscription(){
     const [check, setCheck] = useState(false);
+    const [isOpemModal, setIsOpemModal] = useState(false);
+    const [hashSubscriptionCode, setSubscriptionCode] = useState("");
 
     const nomeInputRef = createRef<HTMLInputElement>();
     const cpfInputRef = createRef<HTMLInputElement>();
@@ -32,8 +33,9 @@ export default function Subscription(){
     const campoInputRef = createRef<HTMLInputElement>();
     const sexoSelectRef = createRef<HTMLSelectElement>();
     const cidadeSelectRef = createRef<HTMLSelectElement>();
+    const checkboxRef = createRef<HTMLInputElement>();
 
-    const router = useRouter();
+  
     const collectionRef = collection(db, 'inscritos2k22');
  
 
@@ -46,9 +48,19 @@ export default function Subscription(){
         },
     };
 
-    function test(){
-        
-        console.log("função test")
+    function opemModal(){
+        setIsOpemModal(true);
+    }   
+
+    function checkBoxHandle(){
+        checkboxRef.current.checked = !checkboxRef.current.checked
+        setCheck(checkboxRef.current.checked);
+
+        console.log(checkboxRef.current.checked)
+    }
+
+    function refreshPage(){ 
+        window.location.reload(); 
     }
 
     function handleSubmitForm(){ 
@@ -70,16 +82,18 @@ export default function Subscription(){
                 QuerySnapshot.forEach((doc) => {
                     subscriptions.push(doc.data());
                 });
-    
+                console.log("funcionando");
                 if(subscriptions.length === 0){
+                   
                     console.log("inscrição feita");
                     verifyFields();
-                }else{
-                    console.log("O CPF Informado já foi cadastrado");
+                }else{ 
+                    alert("O CPF Informado já foi cadastrado")
+                  // refreshPage();
                 }
             }) 
         };
-        
+
         function verifyFields(){
             if(nome === ""){
                 alert("Preencha o campo nome");
@@ -87,7 +101,7 @@ export default function Subscription(){
             }else if(campo === ""){
                 alert("Informe o campo da sua região!");
                 return;
-            }else if(check === false){
+            }else if(checkboxRef.current.checked === false){
                 alert("Clique em CONCORDO");
                 return;
             }else if(validate(cpf) === false){
@@ -115,10 +129,12 @@ export default function Subscription(){
                 subscriptionCode : uuidv4()
             }
 
-            await addDoc(collectionRef, data).then(() => console.log("funcionou"));
-        
-            router.push("/payment");
+            await addDoc(collectionRef, data).then(
+               () => setSubscriptionCode(data.subscriptionCode),
+               () => opemModal()
+            ).catch(() => console.log("Erro"))
         };
+        
     }
     
 
@@ -153,9 +169,12 @@ export default function Subscription(){
                 </p>
                 
                 <div 
+                    onClick={checkBoxHandle}
                     className={styles.checkBoxContainer}
-                >
-
+                    style={ check === true ? {backgroundColor: 'green'} : {backgroundColor: 'none'}}
+                >   
+                    <input ref={checkboxRef} type="checkbox"/>
+                    <label>CONCORDO</label>
                 </div>
             </div>
 
@@ -217,7 +236,11 @@ export default function Subscription(){
                         }
                     </select>   
 
-                    <DoYourSubscriptionButton onClick={test}/>  
+                    <DoYourSubscriptionButton onClick={handleSubmitForm}/>  
+                    <ConfirmationModal 
+                        codigo={hashSubscriptionCode}
+                        opemModal={isOpemModal}
+                    />
                 </div>
             </div>
             </div>

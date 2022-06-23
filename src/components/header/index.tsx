@@ -10,7 +10,7 @@ export function Header() {
             <div className={styles.headerContent}>
                 <img src="/images/LogoIEQ.svg" alt="Logo da igreja do evangélio quadrangular" />
                 <nav>
-                    <Link className={styles.active} href="/home">
+                    <Link className={styles.active} href="/">
                         <a className={styles.active} href="">Home</a>
                     </Link>
                     <Link className={styles.active} href="/subscription">

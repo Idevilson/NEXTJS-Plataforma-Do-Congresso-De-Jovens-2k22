@@ -21,9 +21,6 @@ export function FirstSection(){
   
     return(
       <>
-      <img className={styles.logoIeqCoroa}src="/images/LogoIEQ/Coroa.png" alt="logo da coroa" />
-      <img className={styles.logoIeqCalice}src="/images/LogoIEQ/Calice.png" alt="logo do calice" />
-
         <div className={styles.firstSectionContainer}>
           <section className={styles.TextSection}>
               <h1>Congresso Estadual <br /> Setorizado de <span>Jovens</span> 2022</h1>
@@ -35,7 +32,7 @@ export function FirstSection(){
               <CountdownTimer targetDate={dateTimeAfterThreeDays} />
           </section>
           
-          <img className={styles.logoGeracaoForte} src="/images/LogoGeracaoForte.svg" alt="Logo Da Geração Forte" />  
+          <img src="/images/LogoGeracaoForte.svg" alt="Logo Da Geração Forte" />  
         </div>
       </>
     )

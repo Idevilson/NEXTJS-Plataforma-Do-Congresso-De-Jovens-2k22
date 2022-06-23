@@ -1,46 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import ReactModal from 'react-modal';
 
+import { useRouter } from 'next/router';
 
 interface ConfirmationModalProps{
-    opemModal: () => void;
+    opemModal: boolean
+    codigo: string;
 }
 
-export function ConfirmationModal({ opemModal }: ConfirmationModalProps) {
-    const [isOpemModal, setIsOpemModal] = useState(true);
+export function ConfirmationModal({ opemModal, codigo }: ConfirmationModalProps) {
 
-    function closeModal(){
-      setIsOpemModal(true);
-    }
-    
-
+  const router = useRouter();
+  function handleNavigateToPayment(){
+    router.push("/payment");
+  }
     return (
       <>
         <ReactModal
-          isOpen={false}
+          isOpen={opemModal}
           className={styles.modal}
           overlayClassName={styles.overlay}
 
         >
 
           <div className={styles.modalContent}>
-            <div className={styles.header}>Modal Title</div>
+            <div className={styles.header}>
+              <h2>
+                  COMPROVANTE DE INCRIÇÃO <br />
+                  PARA O CONGRESSO DE JOVENS 2022
+              </h2>
+            </div>
             <button />
             <div className={styles.modalBody}>
               <p>
-                  Olá, ______!
-                  Muito obrigada(o) por se candidatar à vaga _______aqui no/na nome da empresa! Ficamos muito felizes em saber que cada vez mais pessoas querem fazer parte de nossa equipe.
-                  Recebemos seu/sua inscrição / currículo / portfólio. e agora iremos analisar todas as candidaturas recebidas. Planejamos agendar a próxima etapa até data.
-                  Se você estiver entre os perfis que desejamos, você será avisado(a). De qualquer modo, vamos manter você informado(a) sobre o status da sua inscrição.
-                  Obrigado(a), novamente, por dedicar um tempo para se inscrever. Boa sorte!
+                <img className={styles.logoGeracaoForte} src="/images/LogoGeracaoForteBranco.png" alt="Logo Da Geração Forte" /> 
               </p>
             </div>
                 
             <div className={styles.modalFooter}>
-              <button onClick={closeModal}>
-                Close
-              </button>
+              <h2>
+                  CÓDIGO DA INSCRIÇÃO:
+              </h2>
+              <h3>{codigo}</h3>
               <button>Secondary Action</button>
             </div>
           </div>
