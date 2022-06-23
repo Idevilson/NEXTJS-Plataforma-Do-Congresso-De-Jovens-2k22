@@ -1,0 +1,79 @@
+
+.counterContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ebebeb;
+
+  line-height: 1.75rem;
+  padding: 0 0 0.5rem;
+
+  .separator{
+    margin-bottom: 4rem;
+  }
+
+  span {
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+}
+
+.dateDisplayTimer {
+  margin-top: -1.5rem;
+  line-height: 1.25rem;
+  padding: 0 0.75rem 0 0.75rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  P {
+    margin-bottom: 0rem;
+  }
+}
+
+.clock {
+  font-size: 4.5rem !important;
+  font-weight: lighter;
+}
+
+.showCounter .countdown .danger {
+  color: #ff0000;
+}
+
+.danger {
+  margin-top: -1.5rem;
+  line-height: 1.25rem;
+  padding:  0.75rem  0.75rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  P {
+    margin-bottom: 0rem;
+  }
+}
+
+.expiredNotice {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #ebebeb;
+  border-radius: 0.25rem;
+  margin: 0.5rem;
+}
+
+.expiredNotice > span {
+font-size: 2.5rem;
+font-weight: bold;
+color: red;
+}
+
+
+.expiredNotice > p {
+font-size: 1.5rem;
+}

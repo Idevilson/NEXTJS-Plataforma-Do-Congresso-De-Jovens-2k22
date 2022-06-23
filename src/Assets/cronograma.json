@@ -1,0 +1,48 @@
+[
+    {
+        "dia": "Dia 08/07/2022 - Sexta feira",
+        "etapa": "Abertura",
+        "acontecimento": [
+                            "19:30h: Louvor: Noemy Nery e banda on fire",
+                            "08:00h: Coreografia de abertura",
+                            "08:15h: Mensage com Pr Paulo Bengtson",
+                            "21:00h: Louvor Noemy Nery e banda on fire",
+                            "21:30h: Encerramento e Jantar"
+        ]
+    },
+    {
+        "dia": "Dia 09/07/2022 - Sábado Manhã ",
+        "etapa": "1°",
+        "acontecimento": [
+                            "08:30h: Louvor",
+                            "09:00h: 1° Palestra - Júnior Fernandes",
+                            "10:00h: Louvor",
+                            "10:15h: 2° Palestra - Marcelo Grandeza",
+                            "11:15h: Louvor",
+                            "11:45h: Encerranento e Almoço"
+        ]
+    },
+    {
+        "dia": "Dia 09/07/2022 - Sábado Tarde  ",
+        "etapa": "2°",
+        "acontecimento": [
+                            "16:00h: Momento de Arte",
+                            "19:30h: Louvor",
+                            "20:00h: Mensagem",
+                            "21:00h: Show com Marcelo Markes e Banda",
+                            "Encerramento DJ Bruno"
+        ]
+    },
+    {
+        "dia": "Dia 10/07/2022 - DOMINGO",
+        "etapa": "Final",
+        "acontecimento": [
+                            "08:30h: Louvo com Banda: Blessed (Parauapeas - 1)",
+                            "09:15h: 1° Palestra - Pra. Estelita Santos",
+                            "10:00h: Louvo com Banda: Som do pacto (Parauapebas 2)",
+                            "10:30h: 2° Palestra - Pra. Val",
+                            "11:15h: Santa Ceia",
+                            "11:45h: ENCERRAMENTO"
+        ]
+    }
+]

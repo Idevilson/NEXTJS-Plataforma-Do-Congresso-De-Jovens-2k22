@@ -1,0 +1,38 @@
+.pastoresContainer{
+    flex: 1;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+
+
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FF3454;
+
+            border-radius: 3px;
+            height: 3rem;
+            width: 12rem;
+        }
+    }
+
+    .sherpedsContainer{
+       display: flex;
+       
+       padding-left: 1.5rem;
+       margin-top: 3rem;
+       flex: 1;
+       flex-direction: row;
+       flex-wrap: wrap;
+       align-items: center;
+    }
+}
+
+

@@ -1,0 +1,1 @@
+vc-domain-verify=www.quadrangularredencao.versel.app,d8589c80cbe371ec9dcf

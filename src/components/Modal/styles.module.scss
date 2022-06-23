@@ -1,0 +1,28 @@
+.modal{
+    position: absolute;
+    flex: 1;
+
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%;
+
+    border-radius: 0.5rem;
+
+    background-color: rgb(36, 32, 32);
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modalBody{
+
+}
+.modalFooter{
+    
+}
