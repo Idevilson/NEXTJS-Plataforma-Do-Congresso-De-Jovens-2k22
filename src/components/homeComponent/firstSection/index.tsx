@@ -7,7 +7,7 @@ export function FirstSection(){
     function leftDayCalq(){
         const today = new Date();
         var eventDate=new Date(today.getFullYear(), 6, 8);
-        if (today.getMonth()==6 && today.getDate()>7){
+        if (today.getMonth() == 6 && today.getDate()>7){
           eventDate.setFullYear(eventDate.getFullYear()+1); 
         }  
         var one_day=1000*60*60*24;
