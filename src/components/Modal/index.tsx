@@ -35,7 +35,7 @@ export function ConfirmationModal({ opemModal, codigo }: ConfirmationModalProps)
   return (
     <>
       <ReactModal
-        isOpen={true}
+        isOpen={opemModal}
         className={styles.modal}
         overlayClassName={styles.overlay}
       >
