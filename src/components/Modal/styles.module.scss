@@ -4,14 +4,14 @@
    
     position: absolute;
 
-    margin-top: 250px;
+    margin-top: 200px;
     left: 50%;
     transform: translate(-50%);
 
     border-color: solid #000;
 
     width: 400px;
-    height: 400px;
+    height: 500px;
 
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@
     border-radius: 0.5rem;
 
     background-color: white;
-    h2{
+    h1{
         color: #000;
         text-align: center;
     }
@@ -30,6 +30,7 @@
         height: 200px;
     }
 }
+
 
 .modalContent{
     width: 350px;
@@ -49,5 +50,33 @@
     align-items: center;
 }
 .modalFooter{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    h2{
+        color: #000;
+        text-align: center;
+    }
+
+    h3{
+        margin-top: 0.5rem;
+        color: #000;
+    }
+    
+    .footerButton{
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: aqua;
+
+        button{
+            height: 3rem;
+        }
+    }
     
 }

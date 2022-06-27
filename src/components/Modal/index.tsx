@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import ReactModal from 'react-modal';
+import { jsPDF } from "jspdf";
 
 import { useRouter } from 'next/router';
 
@@ -8,6 +9,7 @@ interface ConfirmationModalProps{
     opemModal: boolean
     codigo: string;
 }
+ReactModal.setAppElement('#__next');
 
 export function ConfirmationModal({ opemModal, codigo }: ConfirmationModalProps) {
 
@@ -15,21 +17,34 @@ export function ConfirmationModal({ opemModal, codigo }: ConfirmationModalProps)
   function handleNavigateToPayment(){
     router.push("/payment");
   }
-    return (
-      <>
-        <ReactModal
-          isOpen={opemModal}
-          className={styles.modal}
-          overlayClassName={styles.overlay}
 
-        >
+  async function generatePDF(){
+    const doc = new jsPDF();
+    
 
+    await doc.html(
+      document.getElementById('container'), {
+      callback: function (doc) {
+        doc.save("Comprovante de inscrição");
+      },
+      width: 300
+    })
+  
+  }
+
+  return (
+    <>
+      <ReactModal
+        isOpen={true}
+        className={styles.modal}
+        overlayClassName={styles.overlay}
+      >
+        <div id="container"> 
           <div className={styles.modalContent}>
             <div className={styles.header}>
-              <h2>
-                  COMPROVANTE DE INCRIÇÃO <br />
-                  PARA O CONGRESSO DE JOVENS 2022
-              </h2>
+              <h1>
+                  COMPROVANTE DE INCRIÇÃO
+              </h1>
             </div>
             <button />
             <div className={styles.modalBody}>
@@ -43,11 +58,13 @@ export function ConfirmationModal({ opemModal, codigo }: ConfirmationModalProps)
                   CÓDIGO DA INSCRIÇÃO:
               </h2>
               <h3>{codigo}</h3>
-              <button>Secondary Action</button>
+              <div className={styles.footerButton}>
+                <button onClick={handleNavigateToPayment}>FAZER PAGAMENTO</button>
+              </div>
             </div>
           </div>
-             
-        </ReactModal>
-      </>
-    )
-  }
+        </div>     
+      </ReactModal>
+    </>
+  )
+}

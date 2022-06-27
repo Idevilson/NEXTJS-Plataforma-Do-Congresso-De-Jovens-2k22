@@ -1,20 +1,11 @@
 import React from 'react';
 
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import qrCode from '../../lottie/qrCode.json';
 import { BsWhatsapp } from 'react-icons/bs';
 import styles from './styles.module.scss';
 
 export default function Payment(){
-
-    const animationOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: qrCode,
-        rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-        },
-    };
 
     return(
         <div className={styles.paymentContainer}>
@@ -32,9 +23,11 @@ export default function Payment(){
 
                     <div className={styles.lottieContainer}>
                         <Lottie 
-                            options={animationOptions}
-                            width={200}
-                            height={300}
+                            loop={true}
+                            animationData={qrCode}
+                            style={{
+                                width: 200
+                            }}
                         />
                     </div>
 

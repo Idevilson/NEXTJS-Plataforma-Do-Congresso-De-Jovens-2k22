@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import "../../database/fireBaseConfig";
 
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import form from '../../lottie/form.json';
 import styles from './styles.module.scss';
 
@@ -14,18 +14,17 @@ import municipios from '../../Assets/minicipios.json';
 import { DoYourSubscriptionButton } from '../../components/_ui/doYourSubscriptionButton';
 
 import { db } from '../../database/fireBaseConfig';
-import { 
+import {
     addDoc, 
     collection, 
     where, 
-    query, 
-    onSnapshot,  
+    query,
+    getDocs
 } from 'firebase/firestore';
 
 export default function Subscription(){
-    const [check, setCheck] = useState(false);
+
     const [isOpemModal, setIsOpemModal] = useState(false);
-    const [hashSubscriptionCode, setSubscriptionCode] = useState("");
 
     const nomeInputRef = createRef<HTMLInputElement>();
     const cpfInputRef = createRef<HTMLInputElement>();
@@ -33,37 +32,14 @@ export default function Subscription(){
     const campoInputRef = createRef<HTMLInputElement>();
     const sexoSelectRef = createRef<HTMLSelectElement>();
     const cidadeSelectRef = createRef<HTMLSelectElement>();
-    const checkboxRef = createRef<HTMLInputElement>();
+    const collectionRef = collection(db, 'inscritos2k22'); 
 
-  
-    const collectionRef = collection(db, 'inscritos2k22');
- 
-
-    const animationOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: form,
-        rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-        },
-    };
-
+    let hashSubscriptionCode = "d527eb60-ec0a-4a35-8f2e-91e4ae5695e4";
     function opemModal(){
         setIsOpemModal(true);
     }   
 
-    function checkBoxHandle(){
-        checkboxRef.current.checked = !checkboxRef.current.checked
-        setCheck(checkboxRef.current.checked);
-
-        console.log(checkboxRef.current.checked)
-    }
-
-    function refreshPage(){ 
-        window.location.reload(); 
-    }
-
-    function handleSubmitForm(){ 
+    async function handleSubmitForm(){
         const nome = nomeInputRef.current.value;
         const cpf = cpfInputRef.current.value;
         const idade = idadeInputRef.current.value;
@@ -73,49 +49,37 @@ export default function Subscription(){
         const date = new Date();
         const timesTamp = new Date().getTime();
 
-        verifyCPF();
-        async function verifyCPF(){
-            const queryResult = query(collection(db, "inscritos2k22"), where("cpf", "==", cpf));
-            onSnapshot(queryResult, (QuerySnapshot) => {
-                const subscriptions = [];
-    
-                QuerySnapshot.forEach((doc) => {
-                    subscriptions.push(doc.data());
-                });
-                console.log("funcionando");
-                if(subscriptions.length === 0){
-                   
-                    console.log("inscrição feita");
-                    verifyFields();
-                }else{ 
-                    alert("O CPF Informado já foi cadastrado")
-                  // refreshPage();
-                }
-            }) 
-        };
+        const queryResult = await query(collection(db, "inscritos2k22"), where("cpf", "==", cpf));
+        await getDocs(queryResult).then((doc) => {
+            const docData = [];
 
-        function verifyFields(){
+            doc.forEach((doc) => {
+                docData.push(doc.data())
+            });
+
+            if(docData.length === 0){
+                checkFields();
+            }else{
+                alert("O CPF INFORMADO JÁ ESTÁ CADASTRADO.");
+                window.location.reload();
+            }
+        })
+
+        function checkFields(){
             if(nome === ""){
                 alert("Preencha o campo nome");
-                return;
+            }else if(idade === ""){
+                alert("idade inválida");        
             }else if(campo === ""){
                 alert("Informe o campo da sua região!");
-                return;
-            }else if(checkboxRef.current.checked === false){
-                alert("Clique em CONCORDO");
-                return;
             }else if(validate(cpf) === false){
                 alert("CPF inválido");
-                return;
-            }else if(idade === ""){
-                alert("idade inválida");
-                return;
             }else{
-                setDocument();
+                submitDoc();
             }
-        };
+        }
 
-        async function setDocument() {
+        async function submitDoc(){
             const data = {
                 nome: nome,
                 cpf: cpf,
@@ -126,19 +90,19 @@ export default function Subscription(){
                 sexo: sexo,
                 createdAt: date,
                 Timestamp: timesTamp,
-                subscriptionCode : uuidv4()
+                subscriptionCode: uuidv4()
             }
+            hashSubscriptionCode = data.subscriptionCode;
 
-            await addDoc(collectionRef, data).then(
-               () => setSubscriptionCode(data.subscriptionCode),
-               () => opemModal()
-            ).catch(() => console.log("Erro"))
-        };
-        
+            await addDoc(collectionRef, data).then(() => {                         
+                
+                console.log(hashSubscriptionCode);
+                console.log("cadastro realizado");
+                opemModal();
+            }).catch(() => console.log("Erro"));
+        }  
     }
     
-
-
     return(
     <>
         <div className={styles.paymentContainer}>
@@ -150,9 +114,11 @@ export default function Subscription(){
             <div className={styles.leftSide}>
                 <div className={styles.lottieContainer}>
                         <Lottie 
-                            options={animationOptions}
-                            width={200}
-                            height={300}
+                            loop={true}
+                            animationData={form}
+                            style={{
+                                width: 400
+                            }}
                         />
                 </div>
 
@@ -168,14 +134,7 @@ export default function Subscription(){
                     de estatística e métrica do congresso setorizado estadual de jovens.
                 </p>
                 
-                <div 
-                    onClick={checkBoxHandle}
-                    className={styles.checkBoxContainer}
-                    style={ check === true ? {backgroundColor: 'green'} : {backgroundColor: 'none'}}
-                >   
-                    <input ref={checkboxRef} type="checkbox"/>
-                    <label>CONCORDO</label>
-                </div>
+                
             </div>
 
             <div className={styles.rightSide}>
