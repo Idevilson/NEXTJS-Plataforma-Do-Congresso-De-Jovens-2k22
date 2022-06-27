@@ -1,11 +1,12 @@
 import React from 'react';
 import CountdownTimer from '../../countdownTimer';
 import styles from './styles.module.scss';
+import Image from 'next/image'
 
 export function FirstSection(){
     function leftDayCalq(){
         const today = new Date();
-        var eventDate=new Date(today.getFullYear(), 6, 7);
+        var eventDate=new Date(today.getFullYear(), 6, 8);
         if (today.getMonth()==6 && today.getDate()>7){
           eventDate.setFullYear(eventDate.getFullYear()+1); 
         }  
@@ -32,7 +33,12 @@ export function FirstSection(){
               <CountdownTimer targetDate={dateTimeAfterThreeDays} />
           </section>
           
-          <img src="/images/LogoGeracaoForte.svg" alt="Logo Da Geração Forte" />  
+          <Image 
+            src="/images/LogoGeracaoForte.svg" 
+            alt="Logo Da Geração Forte" 
+            width={400}
+            height={400}
+          />  
         </div>
       </>
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image'
 
 import styles from './styles.module.scss';
 
@@ -8,7 +9,13 @@ export function KitsDoCongresso(){
         <div className={styles.container}>
             <h1>Faça já a sua inscrição e receba o seu kit!</h1>
             <div className={styles.imageContainer}>
-              <img src="/images/kitDoCongresso.png" alt="Imagem completa do kit do congresso" />
+                <Image 
+                    width={900}
+                    height={600}
+                    src="/images/kitDoCongresso.png" 
+                    alt="Imagem completa do kit do congresso" 
+                    style={{marginTop: 50}}
+                />
             </div>
         </div>
     );

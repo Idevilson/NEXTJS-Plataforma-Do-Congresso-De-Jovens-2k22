@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import qrCode from '../../lottie/qrCode.json';
 import { BsWhatsapp } from 'react-icons/bs';
 import styles from './styles.module.scss';
+import Image from 'next/image'
 
 export default function Payment(){
 
@@ -12,7 +13,13 @@ export default function Payment(){
 
             <div className={styles.rightSide}>
                 <div className={styles.QrCodeContainer}>
-                    <img className={styles.qrCode} src="/images/QrCode.png" alt="QrCode para a transferência" />
+                    <Image 
+                        className={styles.qrCode} 
+                        src="/images/PaymentQrCode.png" 
+                        alt="QrCode para a transferência"
+                        width={320} 
+                        height={320}
+                    />
                 </div>
             </div>
 

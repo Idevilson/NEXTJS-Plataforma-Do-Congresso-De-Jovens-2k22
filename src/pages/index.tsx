@@ -6,6 +6,7 @@ import { FirstSection } from '../components/homeComponent/firstSection';
 import { AboutEvent } from '../components/homeComponent/aboutEvent';
 import { ChamadaDoCongresso } from '../components/homeComponent/chamadaDoCongresso';
 import { BandaOnFire } from '../components/homeComponent/bandaOnfire';
+import { MinisterioBlessed } from '../components/homeComponent/ministerioBlessed';
 import { KitsDoCongresso } from '../components/homeComponent/kitsDoCongresso';
 import { Pastores } from '../components/homeComponent/pastores';
 import { Timeline } from '../components/homeComponent/timeline';
@@ -24,6 +25,7 @@ export default function Home() {
         <AboutEvent /> 
         <ChamadaDoCongresso />
         <BandaOnFire />
+        <MinisterioBlessed />
         <KitsDoCongresso />
         <Pastores /> 
         <Timeline /> 

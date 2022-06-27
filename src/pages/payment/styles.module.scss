@@ -1,6 +1,6 @@
 .paymentContainer {
     max-width: 1120px;
-    height: 100vh - 20vh;
+    
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -15,16 +15,14 @@
 .QrCodeContainer{
     width: 25rem;
     height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50px;
     background: #fff;
     box-shadow:  20px 20px 60px #bebebe,
                 -20px -20px 60px #ffffff;
-
-    .qrCode{
-        width: 25rem;
-        height: 25rem;
-    }
 }
 .textContainer{
     display: flex;

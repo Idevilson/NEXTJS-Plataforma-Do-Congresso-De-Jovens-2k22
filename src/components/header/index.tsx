@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './styles.module.scss';
-
+import Image from 'next/image'
 
 export function Header() {
 
@@ -8,7 +8,12 @@ export function Header() {
     return(
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
-                <img src="/images/LogoIEQ.svg" alt="Logo da igreja do evangélio quadrangular" />
+                <Image 
+                    src="/images/LogoIEQ.svg" 
+                    alt="Logo da igreja do evangélio quadrangular"
+                    width={50}
+                    height={50}
+                />
                 <nav>
                     <Link className={styles.active} href="/">
                         <a className={styles.active} href="">Home</a>
