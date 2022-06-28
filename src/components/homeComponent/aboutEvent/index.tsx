@@ -3,8 +3,6 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 export function AboutEvent(){
-
-
     return(
         <div className={styles.container}>
             <div className={styles.imageContainer}>
@@ -16,7 +14,7 @@ export function AboutEvent(){
                 <p>
                     O congresso estadual setorizado de jovens foi criado
                     para trazer renovo, unção, visão, escolhas, para que
-                    os nossos jovens sintão o chamado de Deus para suas vidas.
+                    os nossos jovens sintam o chamado de Deus para suas vidas.
                     Esse é o maior objetivo desse congresso. Seja bem-vindo ao
                     novo tempo, a uma nova história em sua vida. -Pr Heitor Alexangre (2022).  
                 </p>
