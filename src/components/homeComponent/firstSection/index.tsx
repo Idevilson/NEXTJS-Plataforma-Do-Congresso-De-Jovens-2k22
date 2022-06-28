@@ -2,6 +2,7 @@ import React from 'react';
 import CountdownTimer from '../../countdownTimer';
 import styles from './styles.module.scss';
 import Image from 'next/image'
+import Link from 'next/link';
 
 export function FirstSection(){
     function leftDayCalq(){
@@ -27,7 +28,7 @@ export function FirstSection(){
               <h1>Congresso Estadual <br /> Setorizado de <span>Jovens</span> 2022</h1>
 
               <p>
-                Garanta a sua vaga, faça já a sua <span>inscrição</span> <br />
+                Garanta a sua vaga, faça já a sua <Link href="/subscription"><span>inscrição</span></Link> <br />
                 
               </p>
               <CountdownTimer targetDate={dateTimeAfterThreeDays} />

@@ -11,8 +11,8 @@ export function Header() {
                 <Image 
                     src="/images/LogoIEQ.svg" 
                     alt="Logo da igreja do evangélio quadrangular"
-                    width={50}
-                    height={50}
+                    width={70}
+                    height={70}
                 />
                 <nav>
                     <Link className={styles.active} href="/">
